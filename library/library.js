@@ -13,11 +13,7 @@ function Book(title, author, n_pages, read_status){
 function addBookToLibrary(book){
     myLibrary.push(book)
 }
-
-function displayBooks(library){
-    console.table(library)
-}
-
+// some books to test (books database)
 const hobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet")
 const mbovary = new Book("Madame Bovary", "G. Flaubert", 315, "read" )
 const republic = new Book("Republic", "Plato", 415, "read")
@@ -28,6 +24,38 @@ addBookToLibrary(mbovary)
 addBookToLibrary(republic)
 addBookToLibrary(pEssays)
 
-//console.log(myLibrary)
-//console.log(hobbit.info())
+// show books logic
+function bookCell(book){
+    let cell = document.createElement("div")
+    cell.style.height = `50px`
+    cell.style.width = `50px`
+    cell.style.border = "1px solid black"
+    cell.classList.add("book_cell")
+
+    //book info
+    //title = document.createTextNode(book.title)
+    //cell.appendChild(title)
+    //author = document.createTextNode(book.author)
+    //cell.appendChild(author)
+    //n_pages = document.createTextNode(book.n_pages)
+    //cell.appendChild(n_pages)
+    //read_status = document.createTextNode(book.read_status)
+    //cell.appendChild(read_status)
+
+    console.log(cell)
+    return cell
+}
+
+const book_container = document.getElementById("book_table")
+function displayBooks(library){
+    // use flexbox?
+    for (book of library){  
+        console.log(book)
+        book_cell = bookCell(book);
+        book_container.appendChild(bookCell)
+    }
+}
+
+
+//check the app
 displayBooks(myLibrary)
