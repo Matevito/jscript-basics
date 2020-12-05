@@ -26,36 +26,33 @@ addBookToLibrary(pEssays)
 
 // show books logic
 function bookCell(book){
-    let cell = document.createElement("div")
-    cell.style.height = `50px`
-    cell.style.width = `50px`
+    let cell = document.createElement("div");
+    cell.style.height = `150px`
+    cell.style.width = `150px`
     cell.style.border = "1px solid black"
-    cell.classList.add("book_cell")
+    cell.className = "book_cell"
 
     //book info
-    //title = document.createTextNode(book.title)
-    //cell.appendChild(title)
-    //author = document.createTextNode(book.author)
-    //cell.appendChild(author)
-    //n_pages = document.createTextNode(book.n_pages)
-    //cell.appendChild(n_pages)
-    //read_status = document.createTextNode(book.read_status)
-    //cell.appendChild(read_status)
-
-    console.log(cell)
+    title = document.createTextNode(book.title)
+    cell.appendChild(title)
+    author = document.createTextNode(book.author)
+    cell.appendChild(author)
+    n_pages = document.createTextNode(book.n_pages)
+    cell.appendChild(n_pages)
+    read_status = document.createTextNode(book.read_status)
+    cell.appendChild(read_status)
     return cell
 }
 
-const book_container = document.getElementById("book_table")
+const book_container = document.getElementById("book_table");
 function displayBooks(library){
     // use flexbox?
     for (book of library){  
-        console.log(book)
-        book_cell = bookCell(book);
-        book_container.appendChild(bookCell)
+        let book_cell = bookCell(book);
+        console.log(book_cell);
+        book_container.appendChild(book_cell);
     }
-}
-
+};
 
 //check the app
 displayBooks(myLibrary)
