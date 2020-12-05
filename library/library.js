@@ -27,8 +27,8 @@ addBookToLibrary(pEssays)
 // show books logic
 function bookCell(book){
     let cell = document.createElement("div");
-    cell.style.height = `160px`
-    cell.style.width = `160px`
+    cell.style.height = `200px`
+    cell.style.width = `175px`
     cell.style.border = "1px solid black"
     cell.className = "book_cell"
 
@@ -48,6 +48,13 @@ function bookCell(book){
     read_status = document.createElement("p")
     read_status.textContent = `status: ${book.read_status}`
     cell.appendChild(read_status)
+
+    remove_btn = document.createElement("button")
+    remove_btn.textContent = "remove_book"
+    // asign index in array of the book
+    remove_btn.classList.add("remove_btn")
+    // add event listener (`${myLibrary.indexOf(book)}`)
+    cell.appendChild(remove_btn)
 
     return cell
 }
