@@ -27,26 +27,34 @@ addBookToLibrary(pEssays)
 // show books logic
 function bookCell(book){
     let cell = document.createElement("div");
-    cell.style.height = `150px`
-    cell.style.width = `150px`
+    cell.style.height = `160px`
+    cell.style.width = `160px`
     cell.style.border = "1px solid black"
     cell.className = "book_cell"
 
     //book info
-    title = document.createTextNode(book.title)
+    title = document.createElement("p")
+    title.textContent = `${book.title}`
     cell.appendChild(title)
-    author = document.createTextNode(book.author)
+
+    author = document.createElement("p")
+    author.textContent = `${book.author}`
     cell.appendChild(author)
-    n_pages = document.createTextNode(book.n_pages)
+
+    n_pages = document.createElement("p")
+    n_pages.textContent = `${book.n_pages}`
     cell.appendChild(n_pages)
-    read_status = document.createTextNode(book.read_status)
+
+    read_status = document.createElement("p")
+    read_status.textContent = `${book.read_status}`
     cell.appendChild(read_status)
+
     return cell
 }
 
 const book_container = document.getElementById("book_table");
 function displayBooks(library){
-    // use flexbox?
+    //todo: add flexbox?
     for (book of library){  
         let book_cell = bookCell(book);
         console.log(book_cell);
