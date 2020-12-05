@@ -80,14 +80,19 @@ document.querySelector('.close').addEventListener("click", function() {
 	close_popup();
 });
 document.querySelector(".button").addEventListener("click", function(){
-    let title = document.getElementById("title").value
-    let author = document.getElementById("author").value
-    let n_pages = document.getElementById("n_pages").value
-    let status = document.getElementById("status").value
-    let new_book = new Book(title, author, n_pages, status)
-    addBookToLibrary(new_book)
-    displayBooks(myLibrary)
+    let title = document.getElementById("title").value;
+    let author = document.getElementById("author").value;
+    let n_pages = document.getElementById("n_pages").value;
+    let status = document.getElementById("status").value;
+    let new_book = new Book(title, author, n_pages, status);
+    addBookToLibrary(new_book);
+    displayBooks(myLibrary);
     close_popup();
+    // clean the sheet
+    document.getElementById("title").value = "";
+    document.getElementById("author").value = "";
+    document.getElementById("n_pages").value ="";
+    document.getElementById("status").value = "";
 });
 
     // SUBMIT LOGIC
