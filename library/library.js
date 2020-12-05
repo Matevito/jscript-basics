@@ -82,7 +82,7 @@ document.querySelector('.close').addEventListener("click", function() {
 document.querySelector(".button").addEventListener("click", function(){
     let title = document.getElementById("title").value;
     let author = document.getElementById("author").value;
-    let n_pages = document.getElementById("n_pages").value;
+    let n_pages = parseInt(document.getElementById("n_pages").value);
     let status = document.getElementById("status").value;
     let new_book = new Book(title, author, n_pages, status);
     addBookToLibrary(new_book);
