@@ -54,6 +54,11 @@ function bookCell(book){
 
 const book_container = document.getElementById("book_table");
 function displayBooks(library){
+    let existent_files = document.querySelectorAll(".book_cell")
+    let book_table = document.getElementById("book_table")
+    for (cell of existent_files) {
+        book_table.removeChild(cell)
+    }
     //todo: add flexbox?
     for (book of library){  
         let book_cell = bookCell(book);
@@ -65,6 +70,8 @@ function displayBooks(library){
 function close_popup(){
     document.querySelector('.bg-modal').style.display = "none"
 }
+//todo: clean  format when a book is submited
+
 const newBooks_btn = document.getElementById("new_book")
 newBooks_btn.addEventListener("click", function (){
     document.querySelector(".bg-modal").style.display = "flex";
@@ -72,7 +79,16 @@ newBooks_btn.addEventListener("click", function (){
 document.querySelector('.close').addEventListener("click", function() {
 	close_popup();
 });
-
+document.querySelector(".button").addEventListener("click", function(){
+    let title = document.getElementById("title").value
+    let author = document.getElementById("author").value
+    let n_pages = document.getElementById("n_pages").value
+    let status = document.getElementById("status").value
+    let new_book = new Book(title, author, n_pages, status)
+    addBookToLibrary(new_book)
+    displayBooks(myLibrary)
+    close_popup();
+});
 
     // SUBMIT LOGIC
 //check the app
