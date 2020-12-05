@@ -38,15 +38,15 @@ function bookCell(book){
     cell.appendChild(title)
 
     author = document.createElement("p")
-    author.textContent = `${book.author}`
+    author.textContent = `By ${book.author}`
     cell.appendChild(author)
 
     n_pages = document.createElement("p")
-    n_pages.textContent = `${book.n_pages}`
+    n_pages.textContent = `pages: ${book.n_pages}`
     cell.appendChild(n_pages)
 
     read_status = document.createElement("p")
-    read_status.textContent = `${book.read_status}`
+    read_status.textContent = `status: ${book.read_status}`
     cell.appendChild(read_status)
 
     return cell
@@ -61,6 +61,10 @@ function displayBooks(library){
         book_container.appendChild(book_cell);
     }
 };
+
+//new books btn logic
+
+
 
 //check the app
 displayBooks(myLibrary)
