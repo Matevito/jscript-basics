@@ -52,8 +52,8 @@ function bookCell(book){
     remove_btn = document.createElement("button")
     remove_btn.textContent = "remove_book"
     // asign index in array of the book
-    remove_btn.classList.add("remove_btn")
-    // add event listener (`${myLibrary.indexOf(book)}`)
+    remove_btn.classList.add("rmv_btn")
+    remove_btn.value = `${myLibrary.indexOf(book)}`
     cell.appendChild(remove_btn)
 
     return cell
@@ -71,7 +71,17 @@ function displayBooks(library){
         let book_cell = bookCell(book);
         book_container.appendChild(book_cell);
     }
+    // ad event listener to remove btns
+    remove_buttons = document.querySelectorAll(".rmv_btn")
+    remove_buttons.forEach((button) => {
+        button.addEventListener("click", function(){
+            book_index = button.value
+            myLibrary.splice(book_index,1);
+            displayBooks(library)
+        })
+    })
 };
+
 
 //new books btn logic
 function close_popup(){
