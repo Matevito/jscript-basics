@@ -57,14 +57,23 @@ function displayBooks(library){
     //todo: add flexbox?
     for (book of library){  
         let book_cell = bookCell(book);
-        console.log(book_cell);
         book_container.appendChild(book_cell);
     }
 };
 
 //new books btn logic
+function close_popup(){
+    document.querySelector('.bg-modal').style.display = "none"
+}
+const newBooks_btn = document.getElementById("new_book")
+newBooks_btn.addEventListener("click", function (){
+    document.querySelector(".bg-modal").style.display = "flex";
+});
+document.querySelector('.close').addEventListener("click", function() {
+	close_popup();
+});
 
 
-
+    // SUBMIT LOGIC
 //check the app
 displayBooks(myLibrary)
