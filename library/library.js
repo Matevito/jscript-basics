@@ -91,8 +91,16 @@ function displayBooks(library) {
     readStatus_btns = document.querySelectorAll(".read_btn")
     readStatus_btns.forEach((button) => {
         button.addEventListener("click", function(){
-            console.log(button.value)
-            // add logic
+            index = button.value
+            current_book = myLibrary[index]
+            if (current_book.read_status === true){
+                current_book.read_status = false
+            }
+            else{
+                current_book.read_status = true
+            }
+            //refresh page
+            displayBooks(library)
         })
     })
 
