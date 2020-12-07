@@ -14,10 +14,10 @@ function addBookToLibrary(book){
     myLibrary.push(book)
 }
 // some books to test (books database)
-const hobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, "not read yet")
-const mbovary = new Book("Madame Bovary", "G. Flaubert", 315, "read" )
-const republic = new Book("Republic", "Plato", 415, "read")
-const pEssays = new Book ("Political Essays", "D. Hume", 125, "not read yet")
+const hobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false)
+const mbovary = new Book("Madame Bovary", "G. Flaubert", 315, true )
+const republic = new Book("Republic", "Plato", 415, true)
+const pEssays = new Book ("Political Essays", "D. Hume", 125, false)
 
 addBookToLibrary(hobbit)
 addBookToLibrary(mbovary)
@@ -46,8 +46,12 @@ function bookCell(book){
     cell.appendChild(n_pages)
 
     read_status = document.createElement("a")
-    read_status.textContent = `status: ${book.read_status}`
     read_status.classList.add("read_btn")
+    if (book.read_status === true) {
+        read_status.textContent = `status: read`}
+    else {
+        read_status.textContent = `status: not read yet`
+    }
     cell.appendChild(read_status)
 
     remove_btn = document.createElement("button")
