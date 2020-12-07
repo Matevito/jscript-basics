@@ -47,6 +47,7 @@ function bookCell(book) {
 
     read_status = document.createElement("a")
     read_status.classList.add("read_btn")
+    read_status.setAttribute("href", "#")
     read_status.value = `${myLibrary.indexOf(book)}`
     if (book.read_status === true) {
         read_status.textContent = `status: read`
@@ -81,7 +82,7 @@ function displayBooks(library) {
     // ad event listener to remove btns
     remove_buttons = document.querySelectorAll(".rmv_btn")
     remove_buttons.forEach((button) => {
-        button.addEventListener("click", function () {
+        button.addEventListener("//refresh pagelick", function () {
             book_index = button.value
             myLibrary.splice(book_index, 1);
             displayBooks(library)
@@ -99,7 +100,6 @@ function displayBooks(library) {
             else{
                 current_book.read_status = true
             }
-            //refresh page
             displayBooks(library)
         })
     })
