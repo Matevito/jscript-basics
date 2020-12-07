@@ -45,8 +45,9 @@ function bookCell(book){
     n_pages.textContent = `pages: ${book.n_pages}`
     cell.appendChild(n_pages)
 
-    read_status = document.createElement("p")
+    read_status = document.createElement("a")
     read_status.textContent = `status: ${book.read_status}`
+    read_status.classList.add("read_btn")
     cell.appendChild(read_status)
 
     remove_btn = document.createElement("button")
@@ -80,6 +81,9 @@ function displayBooks(library){
             displayBooks(library)
         })
     })
+
+    readStatus_btns = document.querySelectorAll(".read_btn")
+    console.log(readStatus_btns)
 };
 
 
