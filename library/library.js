@@ -88,6 +88,12 @@ function displayBooks(library) {
     })
 
     readStatus_btns = document.querySelectorAll(".read_btn")
+    readStatus_btns.forEach((button) => {
+        button.addEventListener("click", function(){
+            console.log(button)
+            // add logic
+        })
+    })
 
 };
 
