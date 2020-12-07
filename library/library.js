@@ -47,6 +47,7 @@ function bookCell(book) {
 
     read_status = document.createElement("a")
     read_status.classList.add("read_btn")
+    read_status.value = `${myLibrary.indexOf(book)}`
     if (book.read_status === true) {
         read_status.textContent = `status: read`
     }
@@ -90,7 +91,7 @@ function displayBooks(library) {
     readStatus_btns = document.querySelectorAll(".read_btn")
     readStatus_btns.forEach((button) => {
         button.addEventListener("click", function(){
-            console.log(button)
+            console.log(button.value)
             // add logic
         })
     })
