@@ -1,0 +1,6 @@
+.boardCell {
+    width: 100px;
+    length: 100px;
+    border: 1px solid black;
+    text-align: center;
+}
