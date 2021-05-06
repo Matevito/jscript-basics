@@ -1,5 +1,5 @@
 const gameBoard = (() => {
-    let gameboard = ["x","x","o","x","x","x","o","x","o"]
+    let gameboard = [" "," "," "," "," "," "," "," "," "]
 
     const renderBoard = () => {
         let pBoard = document.createElement("div");
