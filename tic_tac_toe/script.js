@@ -1,6 +1,12 @@
 const gameBoard = (() => {
     let gameboard = [" "," "," "," "," "," "," "," "," "]
-
+    
+    const refreshBoard = () => {
+        //erase current rendered board
+        let current_board = document.querySelector(".board");
+        let game_board = document.getElementById("gameBoard");
+        game_board.removeChild(current_board);
+    }
     const renderBoard = () => {
         let pBoard = document.createElement("div");
         pBoard.classList.add("board");
@@ -14,6 +20,8 @@ const gameBoard = (() => {
                 cell = document.createElement("td");
                 cell.classList.add("boardCell")
                 cell.textContent = cell_content;
+                // add event of pressing the cell
+                cell.value = index;
                 line.appendChild(cell);
             }
         pBoard.appendChild(line);}
@@ -26,27 +34,47 @@ const gameBoard = (() => {
         gameboard = [" "," "," "," "," "," "," "," "," "];
 
         //2.remove current displayed board
-        let current_board = document.querySelector(".board");
-        let game_board = document.getElementById("gameBoard");
-        game_board.removeChild(current_board);
-
+        refreshBoard()
         //3.print new board
         renderBoard();
     }
 
     return {
         renderBoard,
-        resetBoard
+        refreshBoard,
+        resetBoard,
+        gameboard,
     }
 })();
 const player = (number, symbol) => {
-    //todo: make move function
-    return number, symbol
+    return {
+        number,
+        symbol}
 }
 const playGame = (() => {
     let current_board = gameBoard;
+    let turn = 1;
     let player_1 = player(1,"x");
-    let player_2 = player(2,"0");
-})();
+    let player_2 = player(2,"o");
 
-gameBoard.renderBoard()
+    //todo: play game logic
+    gameBoard.renderBoard();
+    if (turn%2 == 0){
+        current_player = player_2;
+    }
+    else{
+        current_player = player_1;
+    }
+    console.log(current_player)
+    cells = document.querySelectorAll(".boardCell")
+    cells.forEach((cell) => {
+        // add event only if the cell is free
+        if (gameBoard.gameboard[cell.value] === " "){
+            cell.addEventListener("click",() => {
+            //conection from cell to the array
+            cell.textContent = current_player.symbol;
+            gameBoard.refreshBoard;
+            gameBoard.renderBoard;
+        })}
+    })
+})();
