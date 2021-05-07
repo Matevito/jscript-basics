@@ -32,7 +32,7 @@ const gameBoard = (() => {
             resetBoard();
             refreshBoard();
             //todo
-            display.intro;
+            display.intro();
         })
         pBoard.appendChild(restart_btn);
         game_board.appendChild(pBoard);
@@ -132,7 +132,6 @@ const playGame = (name_1, name_2) => {
                 gameBoard.gameboard[index] = current_player.symbol;
                 gameBoard.refreshBoard();
                 gameBoard.renderBoard();
-                console.log(current_player)
                 //end game logic loop
                 if (check_winner() === true){
                     winner_message(current_player)
@@ -185,4 +184,7 @@ const display = (()=> {
     }
 
     intro()
+    return{
+        intro
+    }
 })()
