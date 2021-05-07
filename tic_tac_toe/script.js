@@ -52,10 +52,10 @@ const player = (name, number, symbol) => {
         number,
         symbol}
 };
-const playGame = (() => {
+const playGame = ((name_1, name_2) => {
     //todo:get name logic
-    const player_1 = player("mateo", 1,"x");
-    const player_2 = player("andres",2,"o");
+    const player_1 = player(name_1, 1,"x");
+    const player_2 = player(name_2, 2,"o");
     let turn = 1;
     const check_winner = () => {
         symbol = current_player.symbol;
@@ -138,10 +138,30 @@ const playGame = (() => {
         })}})
     }
     //todo: play game logic
-    gameBoard.renderBoard();
-    make_move()
+    return{
+        make_move
+    }
     //events logic
 })();
 const display = (()=> {
-
+    const intro = () => {
+        input = document.createElement("div");
+        input.classList.add("input")
+        for (i = 1; i <3; i++){
+            cell = document.createElement("div")
+            cell.textContent ="player "+ i+" name: "
+            player_ = document.createElement("input")
+            cell.appendChild(player_)
+            input.appendChild(cell)
+        }
+        start_btn = document.createElement("button");
+        start_btn.textContent = "START GAME!";
+        input.appendChild(start_btn);
+        document.getElementById("gameBoard").appendChild(input);
+    }
+    const clean_intro = () => {
+        input = document.querySelector(".input");
+        document.getElementById("gameBoard").removeChild(input);
+    }
+    intro()
 })()
