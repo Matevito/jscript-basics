@@ -22,11 +22,20 @@ const gameBoard = (() => {
                 cell.textContent = cell_content;
                 // add event of pressing the cell
                 cell.value = index;
-                line.appendChild(cell);
-            }
-        pBoard.appendChild(line);}
+                line.appendChild(cell);}
+            pBoard.appendChild(line);};
         let game_board = document.getElementById("gameBoard");
-        game_board.appendChild(pBoard)
+
+        let restart_btn = document.createElement("button");
+        restart_btn.textContent = "replay!";
+        restart_btn.addEventListener("click", () => {
+            resetBoard();
+            refreshBoard();
+            //
+            display.intro;
+        })
+        pBoard.appendChild(restart_btn);
+        game_board.appendChild(pBoard);
     }
 
     const resetBoard = () => {
@@ -95,13 +104,13 @@ const playGame = (name_1, name_2) => {
     const winner_message = (player) => {
         message = document.createElement("div");
         message.textContent = player.name + " is the winner!";
-        board = document.getElementById("gameBoard");
+        board = document.querySelector(".board");
         board.appendChild(message);
     }
     const tie_message = () => {
         message = document.createElement("div");
         message.textContent = "it's a tie!";
-        board = document.getElementById("gameBoard");
+        board = document.querySelector(".board");
         board.appendChild(message);
     }
     const make_move = () => {
