@@ -52,21 +52,12 @@ const player = (number, symbol) => {
         symbol}
 }
 const playGame = (() => {
-    let turn = 1;
     const player_1 = player(1,"x");
     const player_2 = player(2,"o");
-    if (turn%2 == 0){
-        current_player = player_2;
-    }
-    else{
-        current_player = player_1;
-    }
-    //todo: logic checks winning player
+    let turn = 1;
     const check_winner = () => {
         symbol = current_player.symbol;
         current_board = gameBoard.gameboard;
-        console.log(symbol + " i happen");
-        console.log(current_board)
         if (current_board[0] === symbol && current_board[1] === symbol && current_board[2] === symbol){
             return true;
         }
@@ -93,25 +84,47 @@ const playGame = (() => {
         }
         return false
     }
+    const check_tie = () => {
+        if (check_winner()== false && gameBoard.gameboard.includes(" ") === false){
+            return true
+        }
+        return false
+    }
+    const make_move = () => {
+        if (turn%2 == 0){
+            current_player = player_2;
+        }
+        else{
+            current_player = player_1;
+        }
+        //end
+        cells = document.querySelectorAll(".boardCell")
+        cells.forEach((cell) => {
+        // add event only if the cell is free
+            if (gameBoard.gameboard[cell.value] === " "){
+                cell.addEventListener("click",() => {
+                //conection from cell to the array
+                cell.textContent = current_player.symbol;
+                index = cell.value;
+                gameBoard.gameboard[index] = current_player.symbol;
+                gameBoard.refreshBoard();
+                gameBoard.renderBoard();
+                //end game logic loop
+                if (check_winner() === true){
+                    return
+                }
+                else if ( check_tie() === true){
+                    return
+                }
+                turn+= 1;
+                make_move();
+        })}})
+    }
 
     //todo: play game logic
     gameBoard.renderBoard();
+    make_move()
     //events logic
-    cells = document.querySelectorAll(".boardCell")
-    cells.forEach((cell) => {
-        // add event only if the cell is free
-        if (gameBoard.gameboard[cell.value] === " "){
-            cell.addEventListener("click",() => {
-            //conection from cell to the array
-            cell.textContent = current_player.symbol;
-            index = cell.value;
-            gameBoard.gameboard[index] = current_player.symbol;
-            gameBoard.refreshBoard;
-            gameBoard.renderBoard;
-            turn+= 1;
-            console.log(check_winner(current_player));
-        })}
-    })
     return {
         check_winner,
     }
