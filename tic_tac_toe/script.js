@@ -67,7 +67,7 @@ const playGame = (() => {
         current_board = gameBoard.gameboard;
         console.log(symbol + " i happen");
         console.log(current_board)
-        if (current_board[0] === symbol && current_board[1] === symbol && current_board[2]){
+        if (current_board[0] === symbol && current_board[1] === symbol && current_board[2] === symbol){
             return true;
         }
         else if(current_board[3] == symbol && current_board[4] == symbol && current_board[5] === symbol){
@@ -104,6 +104,8 @@ const playGame = (() => {
             cell.addEventListener("click",() => {
             //conection from cell to the array
             cell.textContent = current_player.symbol;
+            index = cell.value;
+            gameBoard.gameboard[index] = current_player.symbol;
             gameBoard.refreshBoard;
             gameBoard.renderBoard;
             turn+= 1;
