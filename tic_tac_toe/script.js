@@ -1,3 +1,4 @@
+//todo: reestart new board does not have any events
 const gameBoard = (() => {
     let gameboard = [" "," "," "," "," "," "," "," "," "]
     
@@ -20,7 +21,6 @@ const gameBoard = (() => {
                 cell = document.createElement("td");
                 cell.classList.add("boardCell")
                 cell.textContent = cell_content;
-                // add event of pressing the cell
                 cell.value = index;
                 line.appendChild(cell);}
             pBoard.appendChild(line);};
@@ -29,9 +29,7 @@ const gameBoard = (() => {
         let restart_btn = document.createElement("button");
         restart_btn.textContent = "replay!";
         restart_btn.addEventListener("click", () => {
-            resetBoard();
             refreshBoard();
-            //todo
             display.intro();
         })
         pBoard.appendChild(restart_btn);
@@ -39,13 +37,9 @@ const gameBoard = (() => {
     }
 
     const resetBoard = () => {
-        //1.reset variable
+        //todo: here is the bugg.reset variable// when the variable is reestarted somthing happens wiht the events
+        console.log(gameboard)
         gameboard = [" "," "," "," "," "," "," "," "," "];
-
-        //2.remove current displayed board
-        refreshBoard()
-        //3.print new board
-        renderBoard();
     }
 
     return {
@@ -62,7 +56,6 @@ const player = (name, number, symbol) => {
         symbol}
 };
 const playGame = (name_1, name_2) => {
-    //todo:get name logic
     const player_1 = player(name_1, 1,"x");
     const player_2 = player(name_2, 2,"o");
     let turn = 1;
