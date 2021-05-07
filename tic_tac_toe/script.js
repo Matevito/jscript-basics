@@ -31,7 +31,7 @@ const gameBoard = (() => {
         restart_btn.addEventListener("click", () => {
             resetBoard();
             refreshBoard();
-            //
+            //todo
             display.intro;
         })
         pBoard.appendChild(restart_btn);
