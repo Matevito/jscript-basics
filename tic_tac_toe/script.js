@@ -52,7 +52,7 @@ const player = (name, number, symbol) => {
         number,
         symbol}
 };
-const playGame = ((name_1, name_2) => {
+const playGame = (name_1, name_2) => {
     //todo:get name logic
     const player_1 = player(name_1, 1,"x");
     const player_2 = player(name_2, 2,"o");
@@ -137,31 +137,43 @@ const playGame = ((name_1, name_2) => {
                 make_move();
         })}})
     }
-    //todo: play game logic
     return{
         make_move
     }
-    //events logic
-})();
+};
 const display = (()=> {
     const intro = () => {
-        input = document.createElement("div");
-        input.classList.add("input")
+        let input = document.createElement("div");
+        input.classList.add("input_box")
         for (i = 1; i <3; i++){
-            cell = document.createElement("div")
+            let cell = document.createElement("div")
             cell.textContent ="player "+ i+" name: "
-            player_ = document.createElement("input")
+            let player_ = document.createElement("input")
+            player_.classList.add("input")
             cell.appendChild(player_)
             input.appendChild(cell)
         }
         start_btn = document.createElement("button");
         start_btn.textContent = "START GAME!";
+        // start game logic
+        start_btn.addEventListener("click",() => {
+            let inputs = document.querySelectorAll(".input");
+            let names = []
+            inputs.forEach((name) => {
+                names.push(name.value)
+            });
+            clean_intro();
+            new_game = playGame(names[0],names[1]);
+            gameBoard.renderBoard();
+            new_game.make_move();
+        })
         input.appendChild(start_btn);
         document.getElementById("gameBoard").appendChild(input);
     }
     const clean_intro = () => {
-        input = document.querySelector(".input");
+        input = document.querySelector(".input_box");
         document.getElementById("gameBoard").removeChild(input);
     }
+
     intro()
 })()
