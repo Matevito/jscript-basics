@@ -1,0 +1,1 @@
+console.log("everithing it's allright!");
