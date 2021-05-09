@@ -1,1 +1,3 @@
-console.log("everithing it's allright!")
+import {loadPage} from "./pageLoad"
+
+loadPage()

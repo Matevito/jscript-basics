@@ -1,1 +1,1 @@
-console.log("everithing it's allright!");
+(()=>{"use strict";(function(e){let t=document.createElement("div");t.textContent="headline",e.appendChild(t)})(document.querySelector("#content")),console.log("test")})();
