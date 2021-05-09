@@ -1,4 +1,6 @@
 import {home_element} from "./home_tab";
+import {menu_element} from "./menu_tab";
+import {about_element} from "./about_tab";
 
 function loadTabs(board){
     //1. put tabs
@@ -13,13 +15,13 @@ function loadTabs(board){
     let home_tab = home_element();
     tab_container.appendChild(home_tab);
     //
-    //let menu_tab = document.createElement("button");
-    //tab_container.appendChild(menu_tab);
-    //menu_tab.textContent = "MENU";
+
+    let menu_tab = menu_element();
+    tab_container.appendChild(menu_tab);
     //
-    //let about_tab = document.createElement("button");
-    //tab_container.appendChild(about_tab);
-    //about_tab.textContent = "ABOUT"
+
+    let about_tab = about_element();
+    tab_container.appendChild(about_tab);
 
     //append the elements in the dom
     board.appendChild(tab_container);
