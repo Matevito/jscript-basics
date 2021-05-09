@@ -1,4 +1,4 @@
-import {home_element} from "./home_tab";
+import {home_element, home_event} from "./home_tab";
 import {menu_element} from "./menu_tab";
 import {about_element} from "./about_tab";
 
@@ -14,11 +14,9 @@ function loadTabs(board){
     //3. events of tabs
     let home_tab = home_element();
     tab_container.appendChild(home_tab);
-    //
 
     let menu_tab = menu_element();
     tab_container.appendChild(menu_tab);
-    //
 
     let about_tab = about_element();
     tab_container.appendChild(about_tab);
@@ -27,6 +25,7 @@ function loadTabs(board){
     board.appendChild(tab_container);
     board.appendChild(tab_info);
 
-    //4. run home-tab.
+    //run home_event to display wellcome page
+    home_event();
 }
 export {loadTabs}

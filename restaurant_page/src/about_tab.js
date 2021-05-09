@@ -11,7 +11,8 @@ function about_element(){
         let display = document.createElement("div");
         display.setAttribute("id", "tab_info");
         let info = document.createElement("div");
-        //todo: code of home
+
+        //todo: code of about
         info.textContent = "About";
 
 
