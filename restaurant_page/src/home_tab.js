@@ -10,7 +10,7 @@ function home_element(){
 
 }
 //todo: get the home_text var from a .txt in a folder
-let home_text = "The traditional recipes of family elaborated by Aury. They come with a mix of innovative flavors that we have found in our culinary way, wich make our product, the best for many.";
+let home_text = "The traditional recipes of family elaborated by Aury. They come with a mix of innovative flavors that we have found in our culinary continous learning, wich make our product, the best for many.";
 function home_event(){
     // code to remove current displayed tab_info
     let container_ = document.querySelector("#content");
