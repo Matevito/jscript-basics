@@ -5,15 +5,7 @@ class Food{
         this.price = price;
     }
     
-    name(){
-        return this.name
-    }
-
-    description(){
-        return this.description
-    }
-
-    price(){
+    price_text(){
         return "$ "+ this.price
     }
 }
@@ -21,8 +13,8 @@ class Food{
 //put menu database here
 let menu_items = []
 
-let cookies_description = "Delicious cookies with chocolate chips";
-let cookies = new Food("Choco-cookies!", cookies_description , 3500);
+let cookies_description = "Delicious cookie with chocolate chips and nuts.";
+let cookies = new Food("Choco-cookies", cookies_description , 3500);
 menu_items.push(cookies);
 
 let pionono_description = "Milk soft cake  filled with cinnamon cream.";

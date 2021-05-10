@@ -39,7 +39,7 @@ function print_menu(){
         cell_item.appendChild(description_cell)
 
         let  price_cell = document.createElement("td");
-        price_cell.textContent = item.price;
+        price_cell.textContent = item.price_text();
         price_cell.classList.add("info_cell")
         cell_item.appendChild(price_cell);
 
