@@ -9,6 +9,8 @@ function home_element(){
     return home
 
 }
+//todo: get the home_text var from a .txt in a folder
+let home_text = "The traditional recipes of family elaborated by Aury. They come with a mix of innovative flavors that we have found in our culinary way, wich make our product, the best for many.";
 function home_event(){
     // code to remove current displayed tab_info
     let container_ = document.querySelector("#content");
@@ -16,11 +18,16 @@ function home_event(){
 
     let display = document.createElement("div");
     display.setAttribute("id", "tab_info");
-    let info = document.createElement("div");
-    //todo: code of home
-    info.textContent = "Home";
 
-    display.appendChild(info);
+    let title = document.createElement("h2");
+    title.textContent = "HOME";
+
+    let message = document.createElement("div");
+    message.textContent = home_text;
+
+    //todo:image
+    display.appendChild(title);
+    display.appendChild(message);
     container_.appendChild(display)
 }
 export {

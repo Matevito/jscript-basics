@@ -30,17 +30,17 @@ function print_menu(){
         //create the dom elements and append them in the cell item
         let name_cell = document.createElement("td");
         name_cell.textContent = item.name;
-        name_cell.classList.add("info_cell")
+        name_cell.classList.add("name_cell")
         cell_item.appendChild(name_cell);
 
         let description_cell = document.createElement("td");
         description_cell.textContent = item.description;
-        description_cell.classList.add("info_cell")
+        description_cell.classList.add("description_cell")
         cell_item.appendChild(description_cell)
 
         let  price_cell = document.createElement("td");
         price_cell.textContent = item.price_text();
-        price_cell.classList.add("info_cell")
+        price_cell.classList.add("price_cell")
         cell_item.appendChild(price_cell);
 
         //todo: insert images?
