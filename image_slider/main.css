@@ -1,0 +1,9 @@
+#slider_container {
+    width: 60%;
+    margin: auto;
+}
+#images{
+    display: flex;
+    width: 100%;
+    
+}
