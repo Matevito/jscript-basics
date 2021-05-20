@@ -1,9 +1,9 @@
 #slider_container {
-    width: 60%;
+    width: 300px;
     margin: auto;
+    overflow: hidden;
 }
 #images{
     display: flex;
     width: 100%;
-    
 }
