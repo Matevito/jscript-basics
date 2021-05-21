@@ -1,51 +1,74 @@
-// There are many ways to pick a DOM node; here we get the form itself and the email
-// input box, as well as the span element into which we will place the error message.
-const form  = document.getElementsByTagName('form')[0];
+const error_messages = (() => {
+    const email_error = (error_span) => {
 
-const email = document.getElementById('mail');
-const emailError = document.querySelector('#mail + span.error');
+    }
+    return {
+      email_error
+    }
+})();
 
-email.addEventListener('input', function (event) {
-  // Each time the user types something, we check if the
-  // form fields are valid.
+const form_elements = (() =>{
+  const get_emailInput = () => {
+    let email_input = document.createElement("input");
+    email_input.setAttribute("type", "email")
+    email_input.setAttribute("id", "e_mail")
+    email_input.setAttribute("required", "")
+    
+    //todo:add email_input event
+    email_input.addEventListener("input", () => {
+      //get span_element
+      email_error = document.querySelector("#mail + span.error")
+      if(email_input.validity.valid){
+        console.log(email_error)
+      }
+      else{
 
-  if (email.validity.valid) {
-    // In case there is an error message visible, if the field
-    // is valid, we remove the error message.
-    emailError.textContent = ''; // Reset the content of the message
-    emailError.className = 'error'; // Reset the visual state of the message
-  } else {
-    // If there is still an error, show the correct error
-    showError();
+      }
+    });
+
+    return email_input
   }
-});
+  const get_email = () => {
+    let email_container = document.createElement("p")
+    let label = document.createElement("label");
+    label.setAttribute("for", "e_mail")
 
-form.addEventListener('submit', function (event) {
-  // if the email field is valid, we let the form submit
+    let span = document.createElement("span");
+    span.textContent = "Please enter a valid email adrress:";
+    let email_input = get_emailInput()
 
-  if(!email.validity.valid) {
-    // If it isn't, we display an appropriate error message
-    showError();
-    // Then we prevent the form from being sent by canceling the event
-    event.preventDefault();
+    let span_error = document.createElement("span")
+    span_error.setAttribute("class", "error")
+
+    
+    label.appendChild(span)
+    label.appendChild(email_input)
+    label.appendChild(span_error)
+    email_container.appendChild(label)
+    return email_container
   }
-});
-
-function showError() {
-  if(email.validity.valueMissing) {
-    // If the field is empty
-    // display the following error message.
-    emailError.textContent = 'You need to enter an e-mail address.';
-  } else if(email.validity.typeMismatch) {
-    // If the field doesn't contain an email address
-    // display the following error message.
-    emailError.textContent = 'Entered value needs to be an e-mail address.';
-  } else if(email.validity.tooShort) {
-    // If the data is too short
-    // display the following error message.
-    emailError.textContent = `Email should be at least ${ email.minLength } characters; you entered ${ email.value.length }.`;
+  return {
+    get_email
   }
+})();
 
-  // Set the styling appropriately
-  emailError.className = 'error active';
-}
+function get_formElements(){
+  let form_container = document.createElement("form");
+  let email_element = form_elements.get_email()
+  form_container.appendChild(email_element);
+  //code goes here!
+
+  let submit_btn = document.createElement("button");
+  submit_btn.textContent = "Submit";
+  form_container.appendChild(submit_btn)
+
+  return form_container
+};
+
+function build_form(){
+  let page_container = document.getElementById("page_container");
+  let new_form = get_formElements();
+  page_container.appendChild(new_form)
+};
+
+build_form();
