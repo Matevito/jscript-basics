@@ -138,6 +138,10 @@ document.querySelector(".button").addEventListener("click", function () {
             break;
         }
     }
+    //code here: form validation
+
+
+    //
     console.log(selected_value)
     let new_book = new Book(title, author, n_pages, selected_value);
     addBookToLibrary(new_book);
