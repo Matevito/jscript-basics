@@ -51,7 +51,6 @@ const form_elements = (() =>{
     email_input.setAttribute("type", "email")
   
     email_input.addEventListener("input", () => {
-      //get span_element
       let email_error = document.getElementById("email_error")
       if(email_input.validity.valid){
         email_error.textContent = "";
@@ -85,10 +84,8 @@ const form_elements = (() =>{
     return email_container
   }
   //COUNTRY INPUT
-  //TODO: CANNOT SUBMIT WITH AN INVALID COUNTRY
   const get_countryInput = () => {
     let country_input = document.createElement("input");
-    //check a list of countries
     country_input.setAttribute("id", "country");
     country_input.setAttribute("required", "");
 
@@ -126,6 +123,7 @@ const form_elements = (() =>{
 
     return country_container
   }
+  //ZIPCODE INPUT
   const get_zipInput = () => {
     let zip_input = document.createElement("input");
     zip_input.setAttribute("id", "zip");
@@ -149,7 +147,6 @@ const form_elements = (() =>{
 
     return zip_input
   }
-  //ZIPCODE INPUT
   const get_zipCode = () => {
     let zip_container = document.createElement("p");
 
@@ -170,32 +167,72 @@ const form_elements = (() =>{
 
     return zip_container
   };
-  const get_password = () => {
-    //make two elements
+  //PASSWORD CODE
+  const get_passwordinput = () => {
+    let password_input = [fi]
+  };
+  const get_passwords = () => {
+    let passwords_container = document.createElement("div");
+    let password_1 = document.createElement("p");
+    let password_2 = document.createElement("p");
+
+    //1.pasword 1
+    let label_1 = document.createElement("label");
+    let span_1 = document.createElement("span");
+    span_1.textContent = "Password:"
+    //let password1_input = get_passwordinput("password_1");
+    let span1_error = document.createElement("span");
+    span1_error.setAttribute("class", "error");
+    span1_error.setAttribute("id", "span1_error");
+
+    label_1.appendChild(span_1);
+    //label_1.appendChild(password1_input)
+    label_1.appendChild(span1_error)
+
+
+    //2.password 2
+    let label_2 = document.createElement("label");
+    let span_2 = document.createElement("span");
+    span_2.textContent = "Repeat the password:"
+    //let password2_input = get_passwordinput("password_2");
+    let span2_error = document.createElement("span");
+    span2_error.setAttribute("class", "error");
+    span2_error.setAttribute("id", "span2_error");
+
+    label_2.appendChild(span_2);
+    //label_2.appendChild(password2_input)
+    label_2.appendChild(span2_error)
+
+
+
+    //3.apends elements
+    password_1.appendChild(label_1)
+    password_2.appendChild(label_2)
+    passwords_container.appendChild(password_1);
+    passwords_container.appendChild(password_2);
+    return passwords_container
   }
   return {
     get_email,
     get_country,
     get_zipCode,
-    get_password,
+    get_passwords,
   }
 })();
 
 function get_formElements(){
   let form_container = document.createElement("form");
   let email_element = form_elements.get_email()
-  //code goes here!
-
   let country_element = form_elements.get_country();
-
-
-  //todo: add zip code and password
   let zip_element = form_elements.get_zipCode();
+  //todo: password
+  let passowrds_element = form_elements.get_passwords();
 
-  form_container.appendChild(zip_element)
-  form_container.appendChild(country_element)
+  form_container.appendChild(passowrds_element)
   form_container.appendChild(email_element);
-  //
+  form_container.appendChild(country_element)
+  form_container.appendChild(zip_element)
+  
   let submit_btn = document.createElement("button");
   submit_btn.textContent = "Submit";
   form_container.appendChild(submit_btn)
