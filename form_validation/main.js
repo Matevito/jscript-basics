@@ -56,8 +56,41 @@ const form_elements = (() =>{
     email_container.appendChild(label)
     return email_container
   }
+  const get_countryInput = () => {
+
+  };
+  const get_country = () => {
+    let country_container = document.createElement("p")
+    let label = document.createElement("label");
+    label.setAttribute("for", "country")
+
+    let span =  document.createElement("span");
+    span.textContent = "Enter a country:";
+    //check a list of countries
+    //let country_input = get_countryInput();
+
+    let span_error = document.createElement("span");
+    span_error.setAttribute("class", "error");
+    span_error.setAttribute("id", "country_error");
+
+    label.appendChild(span)
+    //label.appendChild(country_input)
+    label.appendChild(span_error)
+    country_container.appendChild(label)
+
+    return country_container
+  }
+  const get_zipCode = () => {
+
+  };
+  const get_password = () => {
+    //make two elements
+  }
   return {
-    get_email
+    get_email,
+    get_country,
+    get_zipCode,
+    get_password,
   }
 })();
 
@@ -67,6 +100,12 @@ function get_formElements(){
   form_container.appendChild(email_element);
   //code goes here!
 
+  let country_element = form_elements.get_country();
+  form_container.appendChild(country_element)
+
+
+  //todo: add zip code and password
+  //
   let submit_btn = document.createElement("button");
   submit_btn.textContent = "Submit";
   form_container.appendChild(submit_btn)
