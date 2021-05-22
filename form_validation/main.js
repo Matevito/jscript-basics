@@ -33,9 +33,9 @@ const form_elements = (() =>{
   //EMAIL LOGIC
   const get_emailInput = () => {
     let email_input = document.createElement("input");
-    email_input.setAttribute("type", "email")
     email_input.setAttribute("id", "e_mail")
     email_input.setAttribute("required", "") 
+    email_input.setAttribute("type", "email")
   
     email_input.addEventListener("input", () => {
       //get span_element
@@ -80,7 +80,6 @@ const form_elements = (() =>{
     country_input.setAttribute("required", "");
 
     country_input.addEventListener("input", () => {
-      //let country_error = ;
       let input = country_input.value.toUpperCase();
       let country_error = document.getElementById("country_error")
       if (country_names.includes(input)){
@@ -114,7 +113,21 @@ const form_elements = (() =>{
 
     return country_container
   }
+  const get_zipInput = () => {
+    let zip_input = document.createElement("input");
+    zip_input.setAttribute("id", "zip");
+    zip_input.setAttribute("type", "text");
+    zip_input.setAttribute("required", "");
+    zip_input.setAttribute("minlength", "5");
+    zip_input.setAttribute("maxlength", "5");
+    zip_input.setAttribute("pattern", "^[0-9]*$")
+    //zip code
 
+    //event
+
+
+    return zip_input
+  }
   //ZIPCODE INPUT
   const get_zipCode = () => {
     let zip_container = document.createElement("p");
@@ -124,13 +137,13 @@ const form_elements = (() =>{
     let span =  document.createElement("span");
     span.textContent = "Enter a zip code:";
 
-    //zip input
+    let zip_input = get_zipInput();
     let span_error = document.createElement("span");
     span_error.setAttribute("class", "error");
     span_error.setAttribute("id", "zip_error");
 
     label.appendChild(span)
-    //label.appendChild(country_input)
+    label.appendChild(zip_input)
     label.appendChild(span_error)
     zip_container.appendChild(label)
 
@@ -150,16 +163,17 @@ const form_elements = (() =>{
 function get_formElements(){
   let form_container = document.createElement("form");
   let email_element = form_elements.get_email()
-  form_container.appendChild(email_element);
   //code goes here!
 
   let country_element = form_elements.get_country();
-  form_container.appendChild(country_element)
 
 
   //todo: add zip code and password
   let zip_element = form_elements.get_zipCode();
+
   form_container.appendChild(zip_element)
+  form_container.appendChild(country_element)
+  form_container.appendChild(email_element);
   //
   let submit_btn = document.createElement("button");
   submit_btn.textContent = "Submit";
