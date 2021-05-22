@@ -23,9 +23,22 @@ const error_messages = (() => {
       country_error.textContent = "Enter an existent country name"
       country_error.className = "error active"
     }
+    const zip_error = () => {
+      let zip_error = document.getElementById("zip_error");
+      let zip_input  = document.getElementById("zip");
+      //correct this
+      if (zip_input.validity.patternMismatch){
+        zip_error.textContent = "Enter a valid zip code(use only numbers)."
+        return
+      }else if (zip_input.validity.tooShort){
+        zip_error.textContent = "A zip code has 6 digits."
+      }
+      zip_error.className = "error active"
+    }
     return {
       email_error,
-      country_error
+      country_error,
+      zip_error
     }
 })();
 
@@ -57,7 +70,7 @@ const form_elements = (() =>{
     label.setAttribute("for", "e_mail")
 
     let span = document.createElement("span");
-    span.textContent = "Please enter a valid email adrress:";
+    span.textContent = "Enter a valid email address:";
     let email_input = get_emailInput()
 
     let span_error = document.createElement("span")
@@ -121,10 +134,18 @@ const form_elements = (() =>{
     zip_input.setAttribute("minlength", "5");
     zip_input.setAttribute("maxlength", "5");
     zip_input.setAttribute("pattern", "^[0-9]*$")
-    //zip code
-
+    
     //event
-
+    zip_input.addEventListener("input", () => {
+      let zip_error = document.getElementById("zip_error")
+      if (zip_input.validity.valid){
+        zip_error.textContent = "";
+        zip_error.className = "error";
+      }
+      else{
+        error_messages.zip_error()
+      }
+    })
 
     return zip_input
   }
