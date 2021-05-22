@@ -7,10 +7,8 @@
 p * {
     display: block;
 }
-/*
-todo: put all valid input types here 
-*/
-input[type=email]{
+
+input{
     -webkit-appearance: none;
     appearance: none;
     width: 100%;

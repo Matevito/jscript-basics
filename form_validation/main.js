@@ -281,6 +281,15 @@ function get_formElements(){
 function build_form(){
   let page_container = document.getElementById("page_container");
   let new_form = get_formElements();
+  new_form.addEventListener("submit", event => {
+    let errors = document.querySelectorAll("span.error")
+    errors.forEach(function(span_error) {
+      //this happens only if the forms is invalid
+      if(span_error.textContent != ""){
+        event.preventDefault()
+      }
+    })
+  }) 
   page_container.appendChild(new_form)
 };
 
