@@ -30,7 +30,7 @@ const error_messages = (() => {
 })();
 
 const form_elements = (() =>{
-  //todo:organize functions
+  //EMAIL LOGIC
   const get_emailInput = () => {
     let email_input = document.createElement("input");
     email_input.setAttribute("type", "email")
@@ -71,6 +71,8 @@ const form_elements = (() =>{
     email_container.appendChild(label)
     return email_container
   }
+  //COUNTRY INPUT
+  //TODO: CANNOT SUBMIT WITH AN INVALID COUNTRY
   const get_countryInput = () => {
     let country_input = document.createElement("input");
     //check a list of countries
@@ -112,8 +114,27 @@ const form_elements = (() =>{
 
     return country_container
   }
-  const get_zipCode = () => {
 
+  //ZIPCODE INPUT
+  const get_zipCode = () => {
+    let zip_container = document.createElement("p");
+
+    let label = document.createElement("label");
+    label.setAttribute("for", "zip");
+    let span =  document.createElement("span");
+    span.textContent = "Enter a zip code:";
+
+    //zip input
+    let span_error = document.createElement("span");
+    span_error.setAttribute("class", "error");
+    span_error.setAttribute("id", "zip_error");
+
+    label.appendChild(span)
+    //label.appendChild(country_input)
+    label.appendChild(span_error)
+    zip_container.appendChild(label)
+
+    return zip_container
   };
   const get_password = () => {
     //make two elements
@@ -137,6 +158,8 @@ function get_formElements(){
 
 
   //todo: add zip code and password
+  let zip_element = form_elements.get_zipCode();
+  form_container.appendChild(zip_element)
   //
   let submit_btn = document.createElement("button");
   submit_btn.textContent = "Submit";
