@@ -19,7 +19,9 @@ const error_messages = (() => {
       email_error.className = "error active"
     };
     const country_error = () => {
-
+      let country_error = document.getElementById("country_error");
+      country_error.textContent = "Enter an existent country name"
+      country_error.className = "error active"
     }
     return {
       email_error,
