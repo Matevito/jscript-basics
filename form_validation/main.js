@@ -1,6 +1,14 @@
 const error_messages = (() => {
-    const email_error = (error_span) => {
-
+    const email_error = () => {
+      //todo: display error message
+      let email_error = document.getElementById("email_error")
+      let email_input = document.getElementById("e_mail")
+      if (email_input.validity.valueMissing){
+        email_error.textContent = "Enter an e-mail address."
+      } else if (email_input.validity.typeMismatch){
+        email_error.textContent = "Enter a valid e-mail address."
+      } 
+      email_error.className = "error active"
     }
     return {
       email_error
@@ -13,16 +21,16 @@ const form_elements = (() =>{
     email_input.setAttribute("type", "email")
     email_input.setAttribute("id", "e_mail")
     email_input.setAttribute("required", "")
-    
-    //todo:add email_input event
+  
     email_input.addEventListener("input", () => {
       //get span_element
-      email_error = document.querySelector("#mail + span.error")
+      let email_error = document.getElementById("email_error")
       if(email_input.validity.valid){
-        console.log(email_error)
+        email_error.textContent = "";
+        email_error.className = "error";
       }
       else{
-
+        error_messages.email_error();
       }
     });
 
@@ -39,6 +47,7 @@ const form_elements = (() =>{
 
     let span_error = document.createElement("span")
     span_error.setAttribute("class", "error")
+    span_error.setAttribute("id", "email_error")
 
     
     label.appendChild(span)
