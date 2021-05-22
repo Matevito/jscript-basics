@@ -167,9 +167,35 @@ const form_elements = (() =>{
 
     return zip_container
   };
+  const password_validity = (password) => {
+    let regex_expression = new RegExp("(?!^[0-9]*$)(?!^[a-zA-Z]*$)^([a-zA-Z0-9]{8,15})$")
+    return regex_expression.test(password)
+  }
   //PASSWORD CODE
-  const get_passwordinput = () => {
-    let password_input = [fi]
+  const get_passwordinput = (id) => {
+    let password_input = document.createElement("input");
+    password_input.setAttribute("id", id);
+    password_input.setAttribute("required", "");
+    password_input.setAttribute("maxlength", "15")
+    //type:password
+    password_input.setAttribute("type", "text");
+    
+    
+    password_input.addEventListener("input", () => {
+      //let error_1 = document.getElementById("pass1_error");
+      //let error_2 = document.getElementById("pass2_error");
+      let input_1 = document.getElementById("password_1");
+      let input_2 = document.getElementById("password_2");
+      if (password_validity(input_1.value)) {
+        console.log("valid")
+      }else if (input_1.value === input_2.value) {
+        //pass 2 equal 1
+        console.log("valid_2")
+      }else{
+      }
+    })
+
+    return password_input
   };
   const get_passwords = () => {
     let passwords_container = document.createElement("div");
@@ -180,13 +206,13 @@ const form_elements = (() =>{
     let label_1 = document.createElement("label");
     let span_1 = document.createElement("span");
     span_1.textContent = "Password:"
-    //let password1_input = get_passwordinput("password_1");
+    let password1_input = get_passwordinput("password_1");
     let span1_error = document.createElement("span");
     span1_error.setAttribute("class", "error");
-    span1_error.setAttribute("id", "span1_error");
+    span1_error.setAttribute("id", "pass1_error");
 
     label_1.appendChild(span_1);
-    //label_1.appendChild(password1_input)
+    label_1.appendChild(password1_input)
     label_1.appendChild(span1_error)
 
 
@@ -194,13 +220,13 @@ const form_elements = (() =>{
     let label_2 = document.createElement("label");
     let span_2 = document.createElement("span");
     span_2.textContent = "Repeat the password:"
-    //let password2_input = get_passwordinput("password_2");
+    let password2_input = get_passwordinput("password_2");
     let span2_error = document.createElement("span");
     span2_error.setAttribute("class", "error");
-    span2_error.setAttribute("id", "span2_error");
+    span2_error.setAttribute("id", "pass2_error");
 
     label_2.appendChild(span_2);
-    //label_2.appendChild(password2_input)
+    label_2.appendChild(password2_input)
     label_2.appendChild(span2_error)
 
 
