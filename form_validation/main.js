@@ -35,10 +35,20 @@ const error_messages = (() => {
       }
       zip_error.className = "error active"
     }
+    const passwords_error = (error, error_element) => {
+      //call module_password validity
+      if (error === "1"){
+        error_element.textContent = "A valid password has at least 8 characters, a word in both upper and lower case and a number."
+      }else{
+        error_element.textContent = "The passwords don't match"
+      }
+      error_element.className = "error active"
+    }
     return {
       email_error,
       country_error,
-      zip_error
+      zip_error,
+      passwords_error,
     }
 })();
 
@@ -178,23 +188,26 @@ const form_elements = (() =>{
     password_input.setAttribute("required", "");
     password_input.setAttribute("maxlength", "15")
     //type:password
-    password_input.setAttribute("type", "text");
-    
-    
+    password_input.setAttribute("type", "password");
+
     password_input.addEventListener("input", () => {
-      //let error_1 = document.getElementById("pass1_error");
-      //let error_2 = document.getElementById("pass2_error");
+      let error_1 = document.getElementById("pass1_error");
+      let error_2 = document.getElementById("pass2_error");
       let input_1 = document.getElementById("password_1");
       let input_2 = document.getElementById("password_2");
       if (password_validity(input_1.value)) {
-        console.log("valid")
-      }else if (input_1.value === input_2.value) {
-        //pass 2 equal 1
-        console.log("valid_2")
+        error_1.textContent = "";
+        error_1.className = "error";
       }else{
+        error_messages.passwords_error("1", error_1)
+      }
+      if (input_1.value === input_2.value) {
+        error_2.textContent = "";
+        error_2.className = "error";
+      }else{
+        error_messages.passwords_error("2", error_2)
       }
     })
-
     return password_input
   };
   const get_passwords = () => {
@@ -251,13 +264,12 @@ function get_formElements(){
   let email_element = form_elements.get_email()
   let country_element = form_elements.get_country();
   let zip_element = form_elements.get_zipCode();
-  //todo: password
   let passowrds_element = form_elements.get_passwords();
 
-  form_container.appendChild(passowrds_element)
   form_container.appendChild(email_element);
   form_container.appendChild(country_element)
   form_container.appendChild(zip_element)
+  form_container.appendChild(passowrds_element)
   
   let submit_btn = document.createElement("button");
   submit_btn.textContent = "Submit";
