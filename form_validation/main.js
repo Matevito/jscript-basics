@@ -281,6 +281,7 @@ function get_formElements(){
 function build_form(){
   let page_container = document.getElementById("page_container");
   let new_form = get_formElements();
+  //this event van be put on form container
   new_form.addEventListener("submit", event => {
     let errors = document.querySelectorAll("span.error")
     errors.forEach(function(span_error) {
