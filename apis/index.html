@@ -5,22 +5,40 @@
   <title>Document</title>
 </head>
 <body>
-  <img src="#" />
+  <h1>Gifs display</h1>
+  <span>
+    <input type="text">
+  </span>
+  <button>Search a gif</button>
+  <p>
+    <img src="" />
+  </p>
   <script>
-        const Api_key = "https://api.giphy.com/v1/gifs/translate?api_key=OMjqvbw8fwnkT9meStS19IKgOPcn6TcE&s=cats"
-        const img = document.querySelector("img")
-        fetch(Api_key,
-            {mode:"cors"})
-        .then(function(response) {
-            return response.json();
-        })
-        .then(function(response) {
-            let gif_url = response.data.images.original.url
-            img.src = gif_url
-        })
-        .catch(error => {
-            img.textContent = "gif cannot be loaded"
+        function get_gif(input){
+          const Api_key = "https://api.giphy.com/v1/gifs/translate?api_key=OMjqvbw8fwnkT9meStS19IKgOPcn6TcE&s="+input
+          fetch(Api_key,{mode:"cors"})
+          .then(function(response) {
+              return response.json();
+          })
+          .then(function(response) {
+              let gif_url = response.data.images.original.url
+              img.src = gif_url
+          })
+          .catch(error => {
+            img.src = "./fetch_error.png"
             console.log(error)
+          })
+        }
+
+        const img = document.querySelector("img");
+  
+        const newImage_btn = document.querySelector("button")
+        newImage_btn.addEventListener("click", () => {
+          let gif_input = document.querySelector("input").value
+
+          // img.src = <searchingimage path>
+          img.src = "./fetching_image.gif"
+          get_gif(gif_input)
         })
   </script>
 </body>
