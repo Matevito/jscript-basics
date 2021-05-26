@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <img src="#" />
+  <script>
+        const Api_key = "https://api.giphy.com/v1/gifs/translate?api_key=OMjqvbw8fwnkT9meStS19IKgOPcn6TcE&s=cats"
+        const img = document.querySelector("img")
+        fetch(Api_key,
+            {mode:"cors"})
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(response) {
+            let gif_url = response.data.images.original.url
+            img.src = gif_url
+        })
+        .catch(error => {
+            img.textContent = "gif cannot be loaded"
+            console.log(error)
+        })
+  </script>
+</body>
+</html>
